@@ -14,6 +14,11 @@ This repository contains the source code and datasets for our research project o
 - **Advanced Models**: Implementation of a 3D GAN for generating pseudo-masks and a TransUNet for precise segmentation of COVID-19 CT scans.
 - **Results**: Our models demonstrate high accuracy and robustness, surpassing traditional methods in various metrics.
 
+## Background
+- **Original Pipeline**: The foundational research and pipeline for our work was adapted from [Varut Vardhanabhuti et al., 2020](https://doi.org/10.1016/j.compbiomed.2022.106033).
+- **TransUNET Architecture**: Adapted from [mkara44's TransUNET implementation](https://github.com/mkara44/transunet_pytorch).
+
+
 ## Usage
 To replicate our results or use the models for your data:
 1. Clone the repository: `git clone https://github.com/aymaneelfahsi1/UnsupervisedML_GAN_TransUNET_SegmentationCovid.git`

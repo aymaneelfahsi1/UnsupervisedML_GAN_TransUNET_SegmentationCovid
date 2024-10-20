@@ -1,5 +1,5 @@
 
-# Unsupervised Medical Imaging: 3D GAN and TransUNET for Advanced COVID-19 CT Segmentation"
+# Unsupervised Medical Imaging: 3D GAN and TransUNET for Advanced COVID-19 CT Segmentation
 
 This repository contains the source code and datasets for our research project on self-supervised segmentation of COVID-19 CT scans using a combination of 3D GAN and TransUNet architectures.
 ## Authors

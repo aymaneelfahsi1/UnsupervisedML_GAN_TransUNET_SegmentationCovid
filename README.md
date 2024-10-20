@@ -1,5 +1,5 @@
 
-# Unsupervised_ML_GAN+TransUNET_CovidSegmentation
+# UnsupervisedML_GAN+TransUNET_SegmentationCovid
 
 This repository contains the source code and datasets for our research project on self-supervised segmentation of COVID-19 CT scans using a combination of 3D GAN and TransUNet architectures.
 
@@ -20,15 +20,12 @@ This repository contains the source code and datasets for our research project o
 
 ## Usage
 To replicate our results or use the models for your data:
-1. Clone the repository: `git clone https://github.com/aymaneelfahsi1/Unsupervised_ML_GAN+TransUNET_CovidSegmentation.git`
+1. Clone the repository: `git clone https://github.com/aymaneelfahsi1/UnsupervisedML_GAN+TransUNET_SegmentationCovid.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the notebooks: Jupyter notebook `path_to_notebook.ipynb`
 
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.
-
-[Optional: ## License
-Distributed under the MIT License. See `LICENSE` for more information.]
 
 ## Contact
 For any queries, reach out to us at [aymane.elfahsi@student-cs.fr].

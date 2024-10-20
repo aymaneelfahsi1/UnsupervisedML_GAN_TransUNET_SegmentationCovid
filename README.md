@@ -30,3 +30,11 @@ Interested in contributing? We welcome contributions from the community, whether
 
 ## Contact
 For any queries, reach out to us at [aymane.elfahsi@student-cs.fr].
+
+## Declaration
+
+Conflict of Interest: The authors declare that there are no conflicts of interest regarding this project.
+
+Original Notebooks: The notebooks in this repository are based on the original work by the authors of the pipeline we aimed to enhance.
+
+Supervision: This project was conducted under the supervision and guidance of Dr. Oumayma Banouar, Faculty of Sciences and Technics, Cady Ayyad University, [o.banouar@uca.ac.ma].

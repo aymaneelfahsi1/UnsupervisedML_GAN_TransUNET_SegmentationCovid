@@ -2,6 +2,22 @@
 # Unsupervised Medical Imaging: 3D GAN and TransUNET for Advanced COVID-19 CT Segmentation"
 
 This repository contains the source code and datasets for our research project on self-supervised segmentation of COVID-19 CT scans using a combination of 3D GAN and TransUNet architectures.
+## Authors
+
+Aymane EL FAHSI, Aymane DHIMEN, Mostapha EL ANSARI, Selma KOUDIA, Adam M. KHALI  
+Ecole Centrale of Casablanca  
+Emails:  
+- aymane.elfahsi@centrale-casablanca.ma
+- aymane.dhimen@centrale-casablanca.ma
+- mostapha.elansari@centrale-casablanca.ma
+- selma.koudia@centrale-casablanca.ma
+- adam.khali@centrale-casablanca.ma
+
+BANOUAR Oumayma  
+Faculty of Sciences and Technics, Cady Ayyad University  
+Email: o.banouar@uca.ac.ma
+
+
 
 ## Project Structure
 - **Original Data**: Original dataset from Mosmed [download here](https://drive.google.com/drive/folders/1DAMKsbyvNFgIkUIRvVi6ls5nFo6hPmF2?usp=sharing).

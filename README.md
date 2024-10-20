@@ -13,7 +13,7 @@ Emails:
 - selma.koudia@centrale-casablanca.ma
 - adam.khali@centrale-casablanca.ma
 
-BANOUAR Oumayma  
+Dr. BANOUAR Oumayma  
 Faculty of Sciences and Technics, Cady Ayyad University  
 Email: o.banouar@uca.ac.ma
 

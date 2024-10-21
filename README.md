@@ -45,7 +45,7 @@ To replicate our results or use the models for your data:
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.
 
 ## Contact
-For any queries, reach out to us at [aymane.elfahsi@student-cs.fr].
+For any queries, reach out to us at [aymane.elfahsi@student-cs.fr] or [mostapha.el_ansari@centrale-med.fr].
 
 ## Declaration
 

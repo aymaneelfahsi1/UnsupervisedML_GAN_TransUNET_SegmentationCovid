@@ -1,0 +1,29 @@
+name: "Access Request Automation"
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  request-access:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Issue for Access Request
+        id: check_issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issueBody = context.payload.issue.body.toLowerCase();
+            if (issueBody.includes("request access")) {
+              core.setOutput("grant_access", "true");
+            } else {
+              core.setOutput("grant_access", "false");
+            }
+
+      - name: Grant Access (Dispatch Event)
+        if: steps.check_issue.outputs.grant_access == 'true'
+        uses: peter-evans/dispatch-action@v1
+        with:
+          event-type: grant-access
+          client-payload: '{"issue_number": "${{ github.event.issue.number }}"}'

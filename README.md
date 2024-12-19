@@ -33,6 +33,7 @@ Email: o.banouar@uca.ac.ma
 ## Background
 - **Original Pipeline**: The foundational research and pipeline for our work was adapted from [Varut Vardhanabhuti et al., 2020](https://doi.org/10.1016/j.compbiomed.2022.106033).
 - **TransUNET Architecture**: Adapted from [mkara44's TransUNET implementation](https://github.com/mkara44/transunet_pytorch).
+![image](https://github.com/user-attachments/assets/cecd2051-663b-4fec-8738-7581c1a46a8a)
 
 
 ## Usage

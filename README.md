@@ -206,6 +206,34 @@ Each epoch consists of:
 ---
 
 
+## Evaluation of TransUNet with Synthesized Masks
+
+This section evaluates the **TransUNet** model using synthesized segmentation masks. The masks for non-masked training data were generated using a **GAN architecture**, retained from the original pipeline.
+
+### Steps:
+
+1. **Data Loading**:
+   - Input data, synthesized masks, and lung masks are loaded from the **MOSMED Dataset**.
+   - Model predictions for segmentation are generated using the **TransUNet**.
+
+2. **Evaluation Metrics**:
+   - The following metrics are computed to assess segmentation performance:
+     - **Dice Score**: Measures overlap between predicted and ground truth masks.
+     - **Sensitivity**: Proportion of correctly identified infected regions.
+     - **Specificity**: Proportion of correctly identified non-infected regions.
+
+3. **Synthesized Masks**:
+   - For non-masked training data, segmentation masks were synthesized using the **GAN-based architecture** from the original pipeline. These masks provide ground truth references for evaluation.
+
+4. **Plotting Results**:
+   - Evaluation results are plotted to analyze the relationship between infection percentage and:
+     - Dice scores
+     - Sensitivity
+     - Specificity
+
+---
+
+
 
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.

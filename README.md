@@ -223,7 +223,7 @@ This section evaluates the **TransUNet** model using synthesized segmentation ma
      - **Specificity**: Proportion of correctly identified non-infected regions.
 
 3. **Synthesized Masks**:
-   - For non-masked training data, segmentation masks were synthesized using the **GAN-based architecture** from the original pipeline. These masks provide ground truth references for evaluation.
+   - For non-masked training data, segmentation masks were synthesized using the **GAN-based architecture** from the original pipeline. These masks compensate for the lack of ground-truth masks with synthesized pseudo-masks.
 
 4. **Plotting Results**:
    - Evaluation results are plotted to analyze the relationship between infection percentage and:

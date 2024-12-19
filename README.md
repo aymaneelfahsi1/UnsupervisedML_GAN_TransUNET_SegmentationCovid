@@ -113,7 +113,7 @@ At each decoder stage:
 
 
 ### **Revised Decoder Workflow**
-```markdown
+
 1. Bottleneck Features → DecoderBottleneck + Skip Connection (x3)
 2. Upsample + DecoderBottleneck + Skip Connection (x2)
 3. Upsample + DecoderBottleneck + Skip Connection (x1)

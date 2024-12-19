@@ -146,7 +146,66 @@ Email: o.banouar@uca.ac.ma
     ```
 
 
+
+### Training Procedure for TransUNet
+
+#### 1. Overview
+The training process for TransUNet combines **contrastive learning** and **segmentation** to optimize the model’s performance. The process involves:
+- Training with contrastive loss to enhance feature extraction.
+- Training with pixel-level losses (MSE and sensitivity-enhanced loss) to improve segmentation accuracy.
+
 ---
+
+#### 2. Training Workflow
+
+**Step 1: Contrastive Training**
+- **Objective**: Train the model to learn a meaningful feature representation by grouping similar samples (same class) and separating dissimilar samples (different classes).
+- **Steps**:
+  1. Pass a batch of images \( X \) through the model to extract features.
+  2. Apply **Enhanced Contrastive Loss**:
+     - Encourages the model to maximize similarity for features with the same label and minimize similarity for features with different labels.
+  3. Compute gradients and update the model weights.
+
+**Step 2: Segmentation Training**
+- **Objective**: Improve pixel-wise segmentation accuracy using a combination of MSE and sensitivity-enhanced losses.
+- **Steps**:
+  1. Pass a batch of images \( X \) and corresponding masks \( M \) through the model to generate segmentation outputs.
+  2. Apply the following loss functions:
+     - **Mean Squared Error (MSE)**: Penalizes intensity differences between the predicted and ground truth masks.
+     - **Sensitivity-Enhanced Loss**: Penalizes false negatives more heavily, improving the model's sensitivity to subtle features in the segmentation mask.
+  3. Compute gradients and update the model weights.
+
+
+
+#### 3. Combined Loss Function
+During training, the total loss is computed as: L_total = L_contrastive + L_mse + L_sensitivity
+
+This ensures that the model learns to:
+- Extract meaningful features.
+- Accurately predict segmentation masks.
+- Reduce false negatives in segmentation.
+
+
+#### 4. Training Epoch Workflow
+Each epoch consists of:
+1. **Contrastive Training Phase**:
+   - Run the contrastive training process for a few iterations.
+   - Update the model using the contrastive loss.
+2. **Segmentation Training Phase**:
+   - Run the segmentation training process.
+   - Update the model using the MSE and sensitivity-enhanced losses.
+
+
+#### 5. Key Features
+- **Learning Rate Scheduler**:
+  - Automatically adjusts the learning rate based on performance (e.g., using `ReduceLROnPlateau`).
+- **Visualization**:
+  - Loss curves and segmentation outputs are plotted periodically to monitor the training progress.
+- **Model Saving**:
+  - The model is saved at regular intervals for checkpointing and future evaluation.
+
+---
+
 
 
 ## Contributing

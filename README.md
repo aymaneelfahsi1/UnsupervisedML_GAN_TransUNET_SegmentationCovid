@@ -39,13 +39,6 @@ Email: o.banouar@uca.ac.ma
 
 
 
-
-## Usage
-To replicate our results or use the models for your data:
-1. Clone the repository: `git clone https://github.com/aymaneelfahsi1/UnsupervisedML_GAN_TransUNET_SegmentationCovid.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the notebooks: Jupyter notebook `path_to_notebook.ipynb`
-
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.
 

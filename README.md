@@ -92,7 +92,7 @@ Email: o.banouar@uca.ac.ma
 
 ---
 
-### **Key Workflow of the Decoder**
+#### **Key Workflow of the Decoder**
 
 1. **Input**:
    - The input to the decoder is the bottleneck feature map output by the encoder’s Vision Transformer.
@@ -105,16 +105,49 @@ Email: o.banouar@uca.ac.ma
 
 3. **Output**:
    - A segmentation map of the same spatial resolution as the input image.
-
-
-
-#### **Skip Connection Workflow**
-At each decoder stage:
-- **Skip Connection Source**: Feature maps \( x_1, x_2, x_3 \) from the encoder.
-- **Skip Connection Integration**:
-  - Concatenate the skip connection with the upsampled feature map.
-  - This ensures that both fine-grained details and global features are used in reconstruction.
 ---
+
+## Training
+
+### Loss Functions Used in TransUNet Training
+
+#### 1. Supervised Contrastive Loss Adapted
+- **Purpose**: Encourages the model to group feature vectors belonging to the same class while separating those of different classes.
+- **Process**:
+  - **Positive Pairs**: Feature vectors with the same label.
+  - **Negative Pairs**: Feature vectors with different labels.
+  - Computes a **similarity matrix** between all feature vectors using normalized dot products.
+  - The loss maximizes similarity for positive pairs and minimizes similarity for negative pairs using:
+    \[
+    \mathcal{L} = -\log\left(\frac{\text{positive similarity}}{\text{positive similarity} + \text{negative similarity}}\right)
+    \]
+
+
+
+#### 2. Enhanced Contrastive Loss
+- **Purpose**: Enhances sensitivity to positive pairs by weighting their contributions.
+- **Difference from Standard Contrastive Loss**:
+  - Introduces a **sensitivity weight** to amplify the impact of positive similarities, making the loss more robust to class imbalances.
+  - Formula:
+    \[
+    \mathcal{L}_{\text{enhanced}} = -\log\left(\frac{\text{weighted positive similarity}}{\text{weighted positive similarity} + \text{negative similarity}}\right)
+    \]
+
+
+
+#### 3. Sensitivity-Enhanced Loss
+- **Purpose**: Mitigates the impact of false negatives during training, particularly in segmentation tasks where precision matters.
+- **How It Works**:
+  - Computes a **binary cross-entropy (BCE)** loss for predictions.
+  - Adjusts the loss for false negatives by increasing their weight using a sensitivity factor \( \beta \), making the model more penalizing toward missed detections.
+  - Formula:
+    \[
+    \mathcal{L}_{\text{sensitivity}} = \text{BCE Loss} \cdot \left(1 + \beta \cdot \text{False Negative Penalty}\right)
+    \]
+
+---
+
+
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.
 

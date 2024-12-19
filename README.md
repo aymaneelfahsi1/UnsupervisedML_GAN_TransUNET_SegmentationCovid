@@ -102,7 +102,7 @@ Email: o.banouar@uca.ac.ma
 3. **Output**:
    - A segmentation map of the same spatial resolution as the input image.
 
----
+
 
 ### **Skip Connection Workflow**
 At each decoder stage:
@@ -111,7 +111,6 @@ At each decoder stage:
   - Concatenate the skip connection with the upsampled feature map.
   - This ensures that both fine-grained details and global features are used in reconstruction.
 
----
 
 ### **Revised Decoder Workflow**
 ```markdown
@@ -119,7 +118,7 @@ At each decoder stage:
 2. Upsample + DecoderBottleneck + Skip Connection (x2)
 3. Upsample + DecoderBottleneck + Skip Connection (x1)
 4. Final Upsampling and Refinement → Final Convolution → Output Segmentation Map
-
+---
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.
 

@@ -154,7 +154,6 @@ The training process for TransUNet combines **contrastive learning** and **segme
 - Training with contrastive loss to enhance feature extraction.
 - Training with pixel-level losses (MSE and sensitivity-enhanced loss) to improve segmentation accuracy.
 
----
 
 #### 2. Training Workflow
 

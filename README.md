@@ -17,7 +17,7 @@ Dr. BANOUAR Oumayma
 Faculty of Sciences and Technics, Cady Ayyad University  
 Email: o.banouar@uca.ac.ma
 
-
+---
 
 ## Project Structure
 - **Original Data**: Original dataset from Mosmed [download here](https://drive.google.com/drive/folders/1DAMKsbyvNFgIkUIRvVi6ls5nFo6hPmF2?usp=sharing).
@@ -36,8 +36,12 @@ Email: o.banouar@uca.ac.ma
 ![image](https://github.com/user-attachments/assets/cecd2051-663b-4fec-8738-7581c1a46a8a)
 
 ![image](https://github.com/user-attachments/assets/818cf315-fa43-4009-bb37-382cb788db5a)
+---
 
-### Encoder in TransUNet
+## Implementation and Training
+
+### Implementation
+#### Encoder in TransUNet
 
 1. **Initial Convolution**:
    - The input image is first processed by a convolution layer, reducing its spatial resolution and extracting basic features.
@@ -63,7 +67,7 @@ Email: o.banouar@uca.ac.ma
    - The output tokens from the ViT are reshaped back into a 2D feature map.
    - This feature map is passed through a final convolution layer to prepare it for the decoder.
 
-### Decoder in TransUNet
+#### Decoder in TransUNet
 
 1. **Upsampling with Skip Connections**:
    - The decoder progressively upsamples the feature maps to restore the spatial resolution of the input image.
@@ -104,20 +108,12 @@ Email: o.banouar@uca.ac.ma
 
 
 
-### **Skip Connection Workflow**
+#### **Skip Connection Workflow**
 At each decoder stage:
 - **Skip Connection Source**: Feature maps \( x_1, x_2, x_3 \) from the encoder.
 - **Skip Connection Integration**:
   - Concatenate the skip connection with the upsampled feature map.
   - This ensures that both fine-grained details and global features are used in reconstruction.
-
-
-### **Revised Decoder Workflow**
-
-1. Bottleneck Features → DecoderBottleneck + Skip Connection (x3)
-2. Upsample + DecoderBottleneck + Skip Connection (x2)
-3. Upsample + DecoderBottleneck + Skip Connection (x1)
-4. Final Upsampling and Refinement → Final Convolution → Output Segmentation Map
 ---
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.

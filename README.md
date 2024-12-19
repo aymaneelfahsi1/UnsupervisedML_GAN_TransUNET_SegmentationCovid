@@ -112,38 +112,39 @@ Email: o.banouar@uca.ac.ma
 ### Loss Functions Used in TransUNet Training
 
 #### 1. Supervised Contrastive Loss Adapted
-- **Purpose**: Encourages the model to group feature vectors belonging to the same class while separating those of different classes.
-- **Process**:
+- **Purpose**: Groups feature vectors of the same class while separating those of different classes.
+- **How It Works**:
+  - Computes a **similarity matrix** between feature vectors using normalized dot products.
   - **Positive Pairs**: Feature vectors with the same label.
   - **Negative Pairs**: Feature vectors with different labels.
-  - Computes a **similarity matrix** between all feature vectors using normalized dot products.
   - The loss maximizes similarity for positive pairs and minimizes similarity for negative pairs using:
-    \[
-    \mathcal{L} = -\log\left(\frac{\text{positive similarity}}{\text{positive similarity} + \text{negative similarity}}\right)
-    \]
-
+    ```
+    L = -log(positive_similarity / (positive_similarity + negative_similarity))
+    ```
 
 
 #### 2. Enhanced Contrastive Loss
-- **Purpose**: Enhances sensitivity to positive pairs by weighting their contributions.
-- **Difference from Standard Contrastive Loss**:
-  - Introduces a **sensitivity weight** to amplify the impact of positive similarities, making the loss more robust to class imbalances.
+- **Purpose**: Enhances the sensitivity of contrastive learning to positive pairs.
+- **Enhancements**:
+  - Introduces a **sensitivity weight** that increases the impact of positive similarities.
   - Formula:
-    \[
-    \mathcal{L}_{\text{enhanced}} = -\log\left(\frac{\text{weighted positive similarity}}{\text{weighted positive similarity} + \text{negative similarity}}\right)
-    \]
+    ```
+    L_enhanced = -log(weighted_positive_similarity / 
+                     (weighted_positive_similarity + negative_similarity))
+    ```
 
 
 
 #### 3. Sensitivity-Enhanced Loss
-- **Purpose**: Mitigates the impact of false negatives during training, particularly in segmentation tasks where precision matters.
+- **Purpose**: Penalizes false negatives in segmentation tasks by increasing their weight in the loss function.
 - **How It Works**:
-  - Computes a **binary cross-entropy (BCE)** loss for predictions.
-  - Adjusts the loss for false negatives by increasing their weight using a sensitivity factor \( \beta \), making the model more penalizing toward missed detections.
+  - Computes a **Binary Cross-Entropy (BCE)** loss.
+  - Adds a penalty for false negatives using a sensitivity factor \( \beta \).
   - Formula:
-    \[
-    \mathcal{L}_{\text{sensitivity}} = \text{BCE Loss} \cdot \left(1 + \beta \cdot \text{False Negative Penalty}\right)
-    \]
+    ```
+    L_sensitivity = BCE_Loss * (1 + beta * False_Negative_Penalty)
+    ```
+
 
 ---
 

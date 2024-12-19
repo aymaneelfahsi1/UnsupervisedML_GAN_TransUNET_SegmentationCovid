@@ -35,6 +35,9 @@ Email: o.banouar@uca.ac.ma
 - **TransUNET Architecture**: Adapted from [mkara44's TransUNET implementation](https://github.com/mkara44/transunet_pytorch).
 ![image](https://github.com/user-attachments/assets/cecd2051-663b-4fec-8738-7581c1a46a8a)
 
+![Uploading image.png…]()
+
+
 
 ## Usage
 To replicate our results or use the models for your data:

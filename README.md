@@ -37,7 +37,88 @@ Email: o.banouar@uca.ac.ma
 
 ![image](https://github.com/user-attachments/assets/818cf315-fa43-4009-bb37-382cb788db5a)
 
+### Encoder in TransUNet
 
+1. **Initial Convolution**:
+   - The input image is first processed by a convolution layer, reducing its spatial resolution and extracting basic features.
+   - Output: A feature map with increased channels and reduced resolution.
+
+2. **Hierarchical Feature Extraction with CNN**:
+   - The encoder uses three `EncoderBottleneck` blocks, progressively reducing the spatial resolution while increasing the feature depth.
+   - These blocks create a hierarchical representation of the input, capturing local features at multiple scales.
+
+3. **Vision Transformer (ViT) for Global Context**:
+   - The deepest feature map (output of the final bottleneck) is reshaped into a sequence of patches and fed into the **ViT**.
+   - **Purpose**:
+     - The ViT captures **global contextual relationships** across all spatial regions of the image, which traditional CNNs struggle to achieve.
+     - It leverages **self-attention** to learn interactions between patches, providing a more holistic understanding of the input.
+   - **Steps**:
+     - The feature map is divided into patches (size = 1, since it’s already reduced to patches).
+     - Each patch is linearly embedded into a token.
+     - Positional embeddings are added to the tokens to encode spatial relationships.
+     - The tokens pass through multiple transformer blocks, performing self-attention and feedforward transformations.
+   - Output: A globally enriched feature map.
+
+4. **Post-ViT Processing**:
+   - The output tokens from the ViT are reshaped back into a 2D feature map.
+   - This feature map is passed through a final convolution layer to prepare it for the decoder.
+
+### Decoder in TransUNet
+
+1. **Upsampling with Skip Connections**:
+   - The decoder progressively upsamples the feature maps to restore the spatial resolution of the input image.
+   - **Skip connections** from the encoder are concatenated with the upsampled features at each stage.
+   - **Purpose**:
+     - Skip connections help retain fine-grained spatial details from the encoder.
+     - The decoder combines global context (from the bottleneck) and local details (from the skip connections).
+
+2. **Decoder Bottlenecks**:
+   - Each upsampling step is followed by a `DecoderBottleneck`, which refines the features.
+   - **Details**:
+     - Each `DecoderBottleneck` contains:
+       - A bilinear interpolation layer for upsampling.
+       - Convolutions to process and refine the upsampled features.
+       - Batch normalization and ReLU activation for better training stability.
+
+3. **Final Convolution**:
+   - After the last upsampling step, a **final convolution layer** reduces the number of channels to the number of output classes.
+   - This produces the segmentation map.
+   - **Example**:
+     - If the input is \( [B, 1, 128, 128] \) and the task is binary segmentation, the final output will be \( [B, 1, 128, 128] \), with pixel values representing probabilities of each class.
+
+---
+
+### **Key Workflow of the Decoder**
+
+1. **Input**:
+   - The input to the decoder is the bottleneck feature map output by the encoder’s Vision Transformer.
+
+2. **Steps**:
+   - **Step 1**: Bottleneck feature map is upsampled.
+   - **Step 2**: Concatenate with the skip connection from the corresponding encoder layer.
+   - **Step 3**: Refine the combined features using convolutions in the `DecoderBottleneck`.
+   - Repeat for each resolution level until the original input size is restored.
+
+3. **Output**:
+   - A segmentation map of the same spatial resolution as the input image.
+
+---
+
+### **Skip Connection Workflow**
+At each decoder stage:
+- **Skip Connection Source**: Feature maps \( x_1, x_2, x_3 \) from the encoder.
+- **Skip Connection Integration**:
+  - Concatenate the skip connection with the upsampled feature map.
+  - This ensures that both fine-grained details and global features are used in reconstruction.
+
+---
+
+### **Revised Decoder Workflow**
+```markdown
+1. Bottleneck Features → DecoderBottleneck + Skip Connection (x3)
+2. Upsample + DecoderBottleneck + Skip Connection (x2)
+3. Upsample + DecoderBottleneck + Skip Connection (x1)
+4. Final Upsampling and Refinement → Final Convolution → Output Segmentation Map
 
 ## Contributing
 Interested in contributing? We welcome contributions from the community, whether it's improving the codebase, adding new features, or extending the documentation.

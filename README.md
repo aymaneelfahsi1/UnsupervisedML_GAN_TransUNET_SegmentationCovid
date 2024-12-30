@@ -20,7 +20,7 @@ Email: o.banouar@uca.ac.ma
 ---
 
 ## Project Structure
-- **Original Data**: Original dataset from Mosmed [download here](https://drive.google.com/drive/folders/1DAMKsbyvNFgIkUIRvVi6ls5nFo6hPmF2?usp=sharing).
+- **Original Data**: Original dataset from Mosmed [download here](https://drive.google.com/drive/folders/1DAMKsbyvNFgIkUIRvVi6ls5nFo6hPmF2?usp=sharing). The data we used can be found here [download here](https://drive.google.com/drive/folders/1DAMKsbyvNFgIkUIRvVi6ls5nFo6hPmF2?usp=sharing)
 - **Preprocessed Data**: Preprocessed CT scans prepared for the model [download here](https://drive.google.com/drive/folders/1uauGRuoG4i9wB87VK_aAFNwzfC8XwbZs?usp=sharing).
 - **Notebooks**: Jupyter notebooks detailing each step from preprocessing to predictions.
 - **Results**: Outputs and visualizations from our experiments.
